@@ -1,6 +1,6 @@
 import { generate } from 'gerador-validador-cpf'
 
-Cypress.Commands.add('cadastrar', (nome, sobremome, dataNascimento, email, senha)=>{
+Cypress.Commands.add('cadastroDadosPessoais', (nome, sobremome, dataNascimento, email, senha)=>{
     cy.get('[data-cy="button-btn-enroll"]').click()
     cy.get('[data-cy="input-signup-personal-data-firstName"]').type(nome)
     cy.get('[data-cy="input-signup-personal-data-lastName"]').type(sobremome)
@@ -14,4 +14,11 @@ Cypress.Commands.add('cadastrar', (nome, sobremome, dataNascimento, email, senha
     cy.get('#dropdown-button-1 > .overflow-y-scroll > :nth-child(3)').click()
     cy.get('[data-cy="input-signup-personal-data-lgpd"]').click()
     cy.get('[data-cy="button-signup_submit_button_1"]').click()
+})
+
+Cypress.Commands.add('cadastroEndereco', ()=>{
+    cy.get('[data-cy="input-signup-address-cep"]').type('13064759')
+    cy.get('[data-cy="input-signup-address-number"]').type('23')
+    cy.wait(1000)
+    cy.get('[data-cy="button-signup_submit_button_3"]').click()
 })

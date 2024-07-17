@@ -7,6 +7,13 @@ describe('Validação da função de cadastro', () => {
   })
 
   it('Deve realizar o cadastro com sucesso', () => {
-    cy.cadastrar('nome', 'sobremome', '23042000', 'testando3@gmail.com', 'teste')
+    cy.cadastroDadosPessoais('nome', 'sobremome', '23042000', 'testando9@gmail.com', 'teste')
+    cy.cadastroEndereco()
+    cy.get('.text-lime-500').should('contain', 'Thank you for')
   });
+
+  it.only('', () => {
+    
+  });
+
 })
