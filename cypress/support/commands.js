@@ -22,3 +22,10 @@ Cypress.Commands.add('cadastroEndereco', ()=>{
     cy.wait(1000)
     cy.get('[data-cy="button-signup_submit_button_3"]').click()
 })
+
+Cypress.Commands.add('cadastroCompleto', ()=>{
+    let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
+    Cypress.env('generatedEmail', email)
+    cy.cadastroDadosPessoais('nome', 'sobremome', '23042000', email, 'senha')
+    cy.cadastroEndereco()
+})
