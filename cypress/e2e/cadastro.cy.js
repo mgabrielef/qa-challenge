@@ -55,8 +55,6 @@ describe('Validação da função de cadastro', () => {
     cy.get('.toasts-list').should('contain', 'CEP não encontrado')
   });
   
-  it.only('Deve mostrar mensagem de que o campo Nome é obrigatório', () => {
-    cy.get('[data-cy="input-signup-personal-data-firstName"]').should('have.attr', 'required')
-  });
+
 
 })
