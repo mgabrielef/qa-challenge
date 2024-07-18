@@ -89,29 +89,33 @@ describe('Validação da função de cadastro', () => {
     cy.get('[data-cy="input-signup-personal-data-password-confirm"]').should('have.attr', 'required')
   })
 
+  it('Deve validar se o campo nivel de proficiência é obrigatório', () => {
+    cy.get('.lg\\:w-7\\/12 > .form-container > div.relative > .opatcity-0').should('have.attr', 'required')
+  })
+
   it('Deve validar se o campo de Termos de Uso é obrigatório', () => {
     cy.get('[data-cy="input-signup-personal-data-lgpd"]').should('have.attr', 'required')
   })
 
-  it.only('Deve validar se o campo CEP é obrigatório', () => {
+  it('Deve validar se o campo CEP é obrigatório', () => {
     let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
     cy.cadastroDadosPessoais('nome', 'sobrenome', '23042000', email, 'senha')
     cy.get('[data-cy="input-signup-address-cep"]').should('have.attr', 'required')
   })
 
-  it.only('Deve validar se o campo Número residencial é obrigatório', () => {
+  it('Deve validar se o campo Número residencial é obrigatório', () => {
     let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
     cy.cadastroDadosPessoais('nome', 'sobrenome', '23042000', email, 'senha')
     cy.get('[data-cy="input-signup-address-number"]').should('have.attr', 'required')
   })
 
-  it.only('Deve validar se o campo Bairro é obrigatório', () => {
+  it('Deve validar se o campo Bairro é obrigatório', () => {
     let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
     cy.cadastroDadosPessoais('nome', 'sobrenome', '23042000', email, 'senha')
     cy.get('[data-cy="input-signup-address-neighborhood"]').should('have.attr', 'required')
   })
 
-  it.only('Deve validar se o campo Endereço é obrigatório', () => {
+  it('Deve validar se o campo Endereço é obrigatório', () => {
     let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
     cy.cadastroDadosPessoais('nome', 'sobrenome', '23042000', email, 'senha')
     cy.get('[data-cy="input-signup-address-street"]').should('have.attr', 'required')
