@@ -32,6 +32,19 @@ describe('Validação da função de cadastro', () => {
     })
   })
 
+  it('Deve mostrar mensagem de erro se o email no campo de confirmação estiver diferente', () => {
+    let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
+    cy.get('[data-cy="input-signup-personal-data-email"]').type(email)
+    cy.get('[data-cy="input-signup-personal-data-email-confirm"]').type('email')
+    cy.get('.input-error').should('contain', 'Os e-mails não são iguais')
+  })
+
+  it('Deve mostrar mensagem de erro se a senha no campo de confirmação estiver diferente', () => {
+    cy.get('[data-cy="input-signup-personal-data-password"]').type('senha123')
+    cy.get('[data-cy="input-signup-personal-data-password-confirm"]').type('senha')
+    cy.get('.input-error').should('contain', 'As senhas não são iguais')
+  })
+
   it('Deve mostrar mensagem de erro ao tentar cadastrar com CPF inválido', ()=>{
     let email = `email${Math.floor(Math.random() * 100000000)}@mail.com`
     cy.cadastroDadosPessoais('nome', 'sobrenome', '23042000', email, 'senha', '12345678910')
